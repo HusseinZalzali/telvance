@@ -1,0 +1,125 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.service-card {
+  @include card;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all $transition-smooth;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: $gradient-primary;
+    transform: scaleX(0);
+    transition: transform $transition-base;
+    transform-origin: left;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(55, 182, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity $transition-base;
+    pointer-events: none;
+  }
+
+  &:hover {
+    border-color: rgba(55, 182, 255, 0.4);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: $shadow-2xl, $shadow-glow-sm;
+
+    &::before {
+      transform: scaleX(1);
+    }
+
+    &::after {
+      opacity: 1;
+    }
+
+    .service-icon {
+      transform: scale(1.2) rotate(8deg);
+      filter: drop-shadow(0 8px 20px rgba(55, 182, 255, 0.5));
+    }
+  }
+
+  .service-icon {
+    font-size: 4rem;
+    margin-bottom: $spacing-xl;
+    display: inline-block;
+    transition: all $transition-smooth;
+    filter: drop-shadow(0 4px 12px rgba(55, 182, 255, 0.3));
+    line-height: 1;
+  }
+
+  .service-title {
+    color: $primary-accent;
+    margin-bottom: $spacing-md;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .service-description {
+    color: $text-secondary;
+    margin-bottom: $spacing-xl;
+    flex-grow: 1;
+    line-height: 1.7;
+    font-size: $font-size-base;
+  }
+
+  .service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+
+    li {
+      padding: $spacing-sm 0;
+      padding-left: $spacing-xl;
+      position: relative;
+      color: $text-secondary;
+      font-size: $font-size-sm;
+      transition: all $transition-base;
+
+      &::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: $primary-accent;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-lg;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(55, 182, 255, 0.1);
+        border-radius: 50%;
+        transition: all $transition-base;
+      }
+
+      &:hover {
+        color: $text-primary;
+        padding-left: $spacing-2xl;
+
+        &::before {
+          background: rgba(55, 182, 255, 0.2);
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}

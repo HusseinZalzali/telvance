@@ -1,0 +1,47 @@
+<section class="solutions-hero section">
+  <div class="container">
+    <app-section-title
+      title="Our Solutions"
+      subtitle="Tailored technology solutions for every industry and use case">
+    </app-section-title>
+  </div>
+</section>
+
+<section class="solutions-list section">
+  <div class="container">
+    <div class="solutions-grid">
+      <div class="solution-card" *ngFor="let solution of solutions">
+        <div class="solution-header">
+          <div class="solution-icon">{{ solution.icon }}</div>
+          <div class="solution-category">{{ solution.category }}</div>
+        </div>
+        <h3 class="solution-title">{{ solution.title }}</h3>
+        <p class="solution-description">{{ solution.description }}</p>
+        
+        <div class="solution-features">
+          <h4>Key Features</h4>
+          <ul>
+            <li *ngFor="let feature of solution.features">{{ feature }}</li>
+          </ul>
+        </div>
+        
+        <div class="solution-use-cases">
+          <h4>Use Cases</h4>
+          <ul>
+            <li *ngFor="let useCase of solution.useCases">{{ useCase }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Need a Custom Solution?</h2>
+      <p>Our team can design and build a solution tailored specifically to your needs.</p>
+      <a routerLink="/contact" class="btn btn-primary">Contact Us</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,211 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.stats-section {
+  background: linear-gradient(180deg, $dark-gray-light 0%, $primary-bg 100%);
+  margin-top: -80px;
+  position: relative;
+  z-index: 2;
+  border-radius: $border-radius-2xl $border-radius-2xl 0 0;
+  box-shadow: $shadow-2xl;
+  border: 1px solid rgba(55, 182, 255, 0.15);
+  border-bottom: none;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: $gradient-border;
+  }
+
+  .stats-grid {
+    @include grid(4, $spacing-xl);
+    padding: $spacing-4xl 0;
+
+    @include respond-below(lg) {
+      @include grid(2, $spacing-xl);
+    }
+
+    @include respond-below(md) {
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+      padding: $spacing-3xl 0;
+    }
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: $spacing-xl;
+    border-radius: $border-radius-xl;
+    transition: all $transition-smooth;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: $border-radius-xl;
+      background: rgba(55, 182, 255, 0.05);
+      opacity: 0;
+      transition: opacity $transition-base;
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    .stat-value {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: $font-weight-extrabold;
+      background: $gradient-text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: $spacing-sm;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      text-shadow: 0 0 30px rgba(55, 182, 255, 0.3);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: $font-size-lg;
+      color: $text-secondary;
+      font-weight: $font-weight-medium;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+    }
+  }
+}
+
+.services-preview {
+  background: $primary-bg;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at top, rgba(55, 182, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .services-grid {
+    @include grid(3, $spacing-2xl);
+    position: relative;
+    z-index: 1;
+
+    @include respond-below(lg) {
+      @include grid(2, $spacing-xl);
+    }
+
+    @include respond-below(md) {
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+    }
+  }
+}
+
+.why-choose {
+  background: linear-gradient(180deg, $dark-gray-light 0%, $primary-bg 100%);
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: $gradient-border;
+  }
+
+  .why-grid {
+    @include grid(4, $spacing-xl);
+    position: relative;
+    z-index: 1;
+
+    @include respond-below(lg) {
+      @include grid(2, $spacing-lg);
+    }
+
+    @include respond-below(md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .why-item {
+    text-align: center;
+    padding: $spacing-2xl;
+    border-radius: $border-radius-2xl;
+    transition: all $transition-smooth;
+    background: rgba(55, 182, 255, 0.02);
+    border: 1px solid rgba(55, 182, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: $gradient-primary;
+      transform: scaleX(0);
+      transition: transform $transition-base;
+    }
+
+    &:hover {
+      background: rgba(55, 182, 255, 0.08);
+      border-color: rgba(55, 182, 255, 0.3);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: $shadow-xl;
+
+      &::before {
+        transform: scaleX(1);
+      }
+
+      .why-icon {
+        transform: scale(1.15) rotate(5deg);
+        filter: drop-shadow(0 8px 16px rgba(55, 182, 255, 0.4));
+      }
+    }
+
+    .why-icon {
+      font-size: 4.5rem;
+      margin-bottom: $spacing-xl;
+      display: inline-block;
+      transition: all $transition-smooth;
+      filter: drop-shadow(0 4px 8px rgba(55, 182, 255, 0.2));
+    }
+
+    .why-title {
+      color: $primary-accent;
+      margin-bottom: $spacing-md;
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      letter-spacing: -0.01em;
+    }
+
+    .why-description {
+      color: $text-secondary;
+      line-height: 1.7;
+      font-size: $font-size-base;
+    }
+  }
+}

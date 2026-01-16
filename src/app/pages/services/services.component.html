@@ -1,0 +1,26 @@
+<section class="services-hero section">
+  <div class="container">
+    <app-section-title
+      title="Our Services"
+      subtitle="Comprehensive technology solutions to power your business">
+    </app-section-title>
+  </div>
+</section>
+
+<section class="services-list section">
+  <div class="container">
+    <div class="services-grid">
+      <app-service-card *ngFor="let service of services" [service]="service"></app-service-card>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Ready to Transform Your Business?</h2>
+      <p>Let's discuss how our services can help you achieve your goals.</p>
+      <a routerLink="/contact" class="btn btn-primary">Get in Touch</a>
+    </div>
+  </div>
+</section>

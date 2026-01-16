@@ -1,0 +1,22 @@
+<section class="hero" [style.background-image]="backgroundImage ? 'url(' + backgroundImage + ')' : 'none'">
+  <div class="hero-background">
+    <div class="gradient-overlay"></div>
+    <div class="animated-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="hero-content fade-in">
+      <h1 class="hero-headline">{{ headline }}</h1>
+      <p class="hero-subtitle">{{ subtitle }}</p>
+      
+      <div class="hero-buttons" *ngIf="showButtons">
+        <a routerLink="/services" class="btn btn-primary">Our Services</a>
+        <a routerLink="/contact" class="btn btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,80 @@
+<section class="about-hero section">
+  <div class="container">
+    <app-section-title
+      title="About Telvance Solutions"
+      subtitle="Leading the future of telecommunications and software innovation">
+    </app-section-title>
+  </div>
+</section>
+
+<section class="mission-vision section">
+  <div class="container">
+    <div class="mv-grid">
+      <div class="mv-card">
+        <h2>{{ mission.title }}</h2>
+        <p>{{ mission.description }}</p>
+      </div>
+      <div class="mv-card">
+        <h2>{{ vision.title }}</h2>
+        <p>{{ vision.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="values section">
+  <div class="container">
+    <app-section-title
+      title="Our Values"
+      subtitle="The principles that guide everything we do">
+    </app-section-title>
+    
+    <div class="values-grid">
+      <div class="value-card" *ngFor="let value of values">
+        <div class="value-icon">{{ value.icon }}</div>
+        <h3>{{ value.title }}</h3>
+        <p>{{ value.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline section">
+  <div class="container">
+    <app-section-title
+      title="Our Journey"
+      subtitle="Milestones in our growth and evolution">
+    </app-section-title>
+    
+    <div class="timeline-container">
+      <div class="timeline-item" *ngFor="let item of timeline">
+        <div class="timeline-year">{{ item.year }}</div>
+        <div class="timeline-content">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="expertise section">
+  <div class="container">
+    <app-section-title
+      title="Technical Expertise"
+      subtitle="Our proficiency across key technology domains">
+    </app-section-title>
+    
+    <div class="expertise-grid">
+      <div class="expertise-item" *ngFor="let skill of expertise">
+        <div class="expertise-header">
+          <span class="expertise-name">{{ skill.name }}</span>
+          <span class="expertise-percent">{{ skill.level }}%</span>
+        </div>
+        <div class="expertise-bar">
+          <div class="expertise-fill" [style.width.%]="skill.level"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

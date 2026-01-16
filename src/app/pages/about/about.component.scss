@@ -1,0 +1,200 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.about-hero {
+  background: $gradient-dark;
+  color: $primary-accent;
+  padding-top: 120px;
+  text-align: center;
+
+  app-section-title {
+    ::ng-deep {
+      .section-title {
+        .title {
+          color: $primary-accent;
+        }
+        .subtitle {
+          color: $text-secondary;
+        }
+      }
+    }
+  }
+}
+
+.mission-vision {
+  background: $primary-bg;
+
+  .mv-grid {
+    @include grid(2, $spacing-2xl);
+
+    @include respond-below(md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .mv-card {
+    @include card;
+    padding: $spacing-3xl;
+
+    h2 {
+      color: $primary-accent;
+      margin-bottom: $spacing-lg;
+      font-size: $font-size-3xl;
+    }
+
+    p {
+      font-size: $font-size-lg;
+      line-height: 1.8;
+      color: $text-secondary;
+    }
+  }
+}
+
+.values {
+  background: $dark-gray-light;
+
+  .values-grid {
+    @include grid(4, $spacing-xl);
+
+    @include respond-below(lg) {
+      @include grid(2, $spacing-lg);
+    }
+
+    @include respond-below(md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .value-card {
+    text-align: center;
+    padding: $spacing-xl;
+    border-radius: $border-radius-xl;
+    transition: all $transition-base;
+
+    &:hover {
+      background: rgba(55, 182, 255, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .value-icon {
+      font-size: 4rem;
+      margin-bottom: $spacing-lg;
+    }
+
+    h3 {
+      color: $primary-accent;
+      margin-bottom: $spacing-md;
+    }
+
+    p {
+      color: $text-secondary;
+      line-height: 1.6;
+    }
+  }
+}
+
+.timeline {
+  background: $primary-bg;
+
+  .timeline-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: $spacing-2xl;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: $primary-accent;
+    }
+
+    @include respond-below(md) {
+      padding-left: $spacing-xl;
+    }
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: $spacing-3xl;
+    padding-left: $spacing-2xl;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: calc(-#{$spacing-xl} - 6px);
+      top: 0;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: $primary-accent;
+      border: 3px solid $primary-bg;
+      box-shadow: 0 0 0 3px $primary-accent;
+    }
+
+    .timeline-year {
+      font-size: $font-size-2xl;
+      font-weight: $font-weight-bold;
+      color: $primary-accent;
+      margin-bottom: $spacing-sm;
+    }
+
+    .timeline-content {
+      h3 {
+        color: $primary-accent;
+        margin-bottom: $spacing-sm;
+      }
+
+      p {
+        color: $text-secondary;
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+.expertise {
+  background: $dark-gray-light;
+
+  .expertise-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+  }
+
+  .expertise-item {
+    .expertise-header {
+      @include flex-between;
+      margin-bottom: $spacing-sm;
+    }
+
+    .expertise-name {
+      font-weight: $font-weight-semibold;
+      color: $primary-accent;
+    }
+
+    .expertise-percent {
+      font-weight: $font-weight-bold;
+      color: $primary-accent;
+    }
+
+    .expertise-bar {
+      height: 10px;
+      background: rgba(55, 182, 255, 0.1);
+      border-radius: $border-radius-lg;
+      overflow: hidden;
+    }
+
+    .expertise-fill {
+      height: 100%;
+      background: $primary-accent;
+      border-radius: $border-radius-lg;
+      transition: width 1s ease-out;
+    }
+  }
+}

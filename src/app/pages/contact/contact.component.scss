@@ -1,0 +1,173 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.contact-hero {
+  background: $gradient-dark;
+  color: $primary-accent;
+  padding-top: 120px;
+  text-align: center;
+
+  app-section-title {
+    ::ng-deep {
+      .section-title {
+        .title {
+          color: $primary-accent;
+        }
+        .subtitle {
+          color: $text-secondary;
+        }
+      }
+    }
+  }
+}
+
+.contact-section {
+  background: $primary-bg;
+
+  .contact-grid {
+    @include grid(2, $spacing-3xl);
+
+    @include respond-below(lg) {
+      grid-template-columns: 1fr;
+      gap: $spacing-2xl;
+    }
+  }
+
+  .contact-form-container {
+    h2 {
+      color: $primary-accent;
+      margin-bottom: $spacing-xl;
+    }
+  }
+
+  .contact-form {
+    .form-row {
+      @include grid(2, $spacing-lg);
+
+      @include respond-below(sm) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: $spacing-lg;
+
+      label {
+        display: block;
+        margin-bottom: $spacing-sm;
+        color: $primary-accent;
+        font-weight: $font-weight-semibold;
+        font-size: $font-size-sm;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: $spacing-md;
+        border: 2px solid rgba(55, 182, 255, 0.2);
+        border-radius: $border-radius-lg;
+        font-family: $font-family;
+        font-size: $font-size-base;
+        transition: all $transition-base;
+        background: $dark-gray-light;
+        color: $text-primary;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-accent;
+          box-shadow: 0 0 0 3px rgba(55, 182, 255, 0.1);
+        }
+
+        &::placeholder {
+          color: $text-muted;
+        }
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+    }
+
+    .btn {
+      width: 100%;
+      margin-top: $spacing-md;
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .contact-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+  }
+
+  .contact-info-card {
+    @include card;
+    padding: $spacing-2xl;
+
+    h2 {
+      color: $primary-accent;
+      margin-bottom: $spacing-xl;
+    }
+
+    .info-item {
+      display: flex;
+      gap: $spacing-lg;
+      margin-bottom: $spacing-xl;
+
+      .info-icon {
+        font-size: $font-size-2xl;
+        flex-shrink: 0;
+      }
+
+      .info-content {
+        h4 {
+          color: $primary-accent;
+          margin-bottom: $spacing-xs;
+          font-size: $font-size-lg;
+        }
+
+        p,
+        a {
+          color: $text-secondary;
+          line-height: 1.6;
+        }
+
+        a {
+          transition: color $transition-base;
+
+          &:hover {
+            color: $primary-accent;
+          }
+        }
+      }
+    }
+  }
+
+  .map-placeholder {
+    @include card;
+    height: 400px;
+    @include flex-center;
+    background: linear-gradient(135deg, rgba(55, 182, 255, 0.05) 0%, rgba(55, 182, 255, 0.02) 100%);
+    border: 2px dashed rgba(55, 182, 255, 0.3);
+
+    .map-content {
+      text-align: center;
+
+      p {
+        color: $text-muted;
+        margin: 0;
+
+        &.map-note {
+          font-size: $font-size-sm;
+          margin-top: $spacing-sm;
+        }
+      }
+    }
+  }
+}

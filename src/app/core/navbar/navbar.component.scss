@@ -1,0 +1,187 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index-sticky;
+  padding: $spacing-lg 0;
+  transition: all $transition-smooth;
+  background: rgba(11, 16, 41, 0.7);
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  border-bottom: 1px solid rgba(55, 182, 255, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+
+  &.scrolled {
+    background: rgba(11, 16, 41, 0.92);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(55, 182, 255, 0.15), 0 0 20px rgba(55, 182, 255, 0.05);
+    padding: $spacing-md 0;
+    border-bottom-color: rgba(55, 182, 255, 0.2);
+  }
+
+  .container {
+    @include flex-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    text-decoration: none;
+    transition: all $transition-base;
+
+    .logo-image {
+      height: 70px;
+      width: auto;
+      object-fit: contain;
+      transition: all $transition-base;
+
+      @include respond-below(md) {
+        height: 50px;
+      }
+    }
+
+    .logo-text {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: #37b6ff;
+      background: linear-gradient(135deg, rgba(55, 182, 255, 0.15) 0%, rgba(55, 182, 255, 0.05) 100%);
+      padding: $spacing-sm $spacing-lg;
+      border-radius: $border-radius-lg;
+      border: 1px solid rgba(55, 182, 255, 0.2);
+      transition: all $transition-base;
+
+      @include respond-below(md) {
+        font-size: $font-size-lg;
+        padding: $spacing-xs $spacing-md;
+      }
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+
+      .logo-text {
+        background: linear-gradient(135deg, rgba(55, 182, 255, 0.25) 0%, rgba(55, 182, 255, 0.1) 100%);
+        border-color: rgba(55, 182, 255, 0.4);
+        box-shadow: 0 4px 12px rgba(55, 182, 255, 0.2);
+      }
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: $spacing-xl;
+    align-items: center;
+
+    @include respond-below(lg) {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: rgba(11, 16, 41, 0.98);
+      backdrop-filter: blur(20px);
+      padding: $spacing-xl;
+      gap: $spacing-lg;
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all $transition-base;
+      box-shadow: $shadow-lg;
+
+      &.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    a {
+      color: $text-primary;
+      font-weight: $font-weight-medium;
+      padding: $spacing-sm $spacing-md;
+      border-radius: $border-radius-md;
+      transition: all $transition-base;
+      position: relative;
+      font-size: $font-size-base;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: $border-radius-md;
+        background: rgba(55, 182, 255, 0.05);
+        opacity: 0;
+        transition: opacity $transition-base;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, $primary-accent, transparent);
+        transition: width $transition-base;
+        border-radius: $border-radius-full;
+      }
+
+      &:hover {
+        color: $primary-accent;
+        transform: translateY(-1px);
+
+        &::before {
+          opacity: 1;
+        }
+
+        &::after {
+          width: 100%;
+        }
+      }
+
+      &.active {
+        color: $primary-accent;
+        background: rgba(55, 182, 255, 0.1);
+        border: 1px solid rgba(55, 182, 255, 0.2);
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-sm;
+
+    @include respond-below(lg) {
+      display: flex;
+    }
+
+    span {
+      width: 25px;
+      height: 3px;
+      background: $primary-accent;
+      border-radius: 2px;
+      transition: all $transition-base;
+    }
+
+    &:hover span {
+      background: lighten($primary-accent, 10%);
+    }
+  }
+}

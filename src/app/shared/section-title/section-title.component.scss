@@ -1,0 +1,101 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.section-title {
+  margin-bottom: $spacing-4xl;
+  text-align: center;
+  position: relative;
+
+  &.align-left {
+    text-align: left;
+  }
+
+  &.align-right {
+    text-align: right;
+  }
+
+  .title {
+    @include gradient-text;
+    margin-bottom: $spacing-lg;
+    font-weight: $font-weight-extrabold;
+    letter-spacing: -0.03em;
+    position: relative;
+    display: inline-block;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.1;
+    text-shadow: 0 0 30px rgba(55, 182, 255, 0.2);
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -$spacing-md;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: $gradient-primary;
+      border-radius: $border-radius-full;
+      box-shadow: 0 0 10px rgba(55, 182, 255, 0.5);
+
+      .align-left & {
+        left: 0;
+        transform: none;
+      }
+
+      .align-right & {
+        left: auto;
+        right: 0;
+        transform: none;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: calc(-#{$spacing-md} - 2px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 4px;
+      background: rgba(55, 182, 255, 0.3);
+      border-radius: $border-radius-full;
+      animation: expandLine 1s ease-out 0.5s forwards;
+
+      .align-left & {
+        left: 0;
+        transform: none;
+      }
+
+      .align-right & {
+        left: auto;
+        right: 0;
+        transform: none;
+      }
+    }
+  }
+
+  .subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: $text-secondary;
+    max-width: 800px;
+    margin: $spacing-xl auto 0;
+    line-height: 1.8;
+    font-weight: $font-weight-normal;
+    letter-spacing: 0.01em;
+
+    .align-left & {
+      margin: $spacing-xl 0 0;
+    }
+
+    .align-right & {
+      margin: $spacing-xl auto 0;
+      margin-left: auto;
+    }
+  }
+}
+
+@keyframes expandLine {
+  to {
+    width: 120px;
+  }
+}

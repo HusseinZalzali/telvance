@@ -1,0 +1,71 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.services-hero {
+  background: $gradient-dark;
+  color: $primary-accent;
+  padding-top: 120px;
+  text-align: center;
+
+  app-section-title {
+    ::ng-deep {
+      .section-title {
+        .title {
+          color: $primary-accent;
+        }
+        .subtitle {
+          color: $text-secondary;
+        }
+      }
+    }
+  }
+}
+
+.services-list {
+  background: $primary-bg;
+
+  .services-grid {
+    @include grid(3, $spacing-xl);
+
+    @include respond-below(lg) {
+      @include grid(2, $spacing-lg);
+    }
+
+    @include respond-below(md) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.cta-section {
+  background: $primary-accent;
+  color: $primary-bg;
+  text-align: center;
+
+  .cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+
+    h2 {
+      color: $primary-bg;
+      margin-bottom: $spacing-md;
+      font-size: $font-size-4xl;
+    }
+
+    p {
+      color: rgba(11, 16, 41, 0.9);
+      font-size: $font-size-lg;
+      margin-bottom: $spacing-2xl;
+    }
+
+    .btn {
+      background: $primary-bg;
+      color: $primary-accent;
+
+      &:hover {
+        background: lighten($primary-bg, 5%);
+        transform: translateY(-2px);
+      }
+    }
+  }
+}

@@ -1,0 +1,139 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.solutions-hero {
+  background: $gradient-dark;
+  color: $primary-accent;
+  padding-top: 120px;
+  text-align: center;
+
+  app-section-title {
+    ::ng-deep {
+      .section-title {
+        .title {
+          color: $primary-accent;
+        }
+        .subtitle {
+          color: $text-secondary;
+        }
+      }
+    }
+  }
+}
+
+.solutions-list {
+  background: $primary-bg;
+
+  .solutions-grid {
+    @include grid(2, $spacing-xl);
+
+    @include respond-below(md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .solution-card {
+    @include card;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .solution-header {
+      @include flex-between;
+      margin-bottom: $spacing-lg;
+    }
+
+    .solution-icon {
+      font-size: 3rem;
+    }
+
+    .solution-category {
+      padding: $spacing-sm $spacing-md;
+      background: rgba(55, 182, 255, 0.1);
+      color: $primary-accent;
+      border-radius: $border-radius-md;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semibold;
+    }
+
+    .solution-title {
+      color: $primary-accent;
+      margin-bottom: $spacing-md;
+      font-size: $font-size-2xl;
+    }
+
+    .solution-description {
+      color: $text-secondary;
+      margin-bottom: $spacing-xl;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .solution-features,
+    .solution-use-cases {
+      margin-bottom: $spacing-lg;
+
+      h4 {
+        color: $primary-accent;
+        font-size: $font-size-lg;
+        margin-bottom: $spacing-sm;
+        font-weight: $font-weight-semibold;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          padding: $spacing-xs 0;
+          padding-left: $spacing-lg;
+          position: relative;
+          color: $text-secondary;
+
+          &::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: $primary-accent;
+            font-weight: $font-weight-bold;
+            font-size: $font-size-xl;
+          }
+        }
+      }
+    }
+  }
+}
+
+.cta-section {
+  background: $primary-accent;
+  color: $primary-bg;
+  text-align: center;
+
+  .cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+
+    h2 {
+      color: $primary-bg;
+      margin-bottom: $spacing-md;
+      font-size: $font-size-4xl;
+    }
+
+    p {
+      color: rgba(11, 16, 41, 0.9);
+      font-size: $font-size-lg;
+      margin-bottom: $spacing-2xl;
+    }
+
+    .btn {
+      background: $primary-bg;
+      color: $primary-accent;
+
+      &:hover {
+        background: lighten($primary-bg, 5%);
+        transform: translateY(-2px);
+      }
+    }
+  }
+}

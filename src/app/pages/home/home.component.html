@@ -1,0 +1,49 @@
+<app-hero
+  headline="Powering Tomorrow's Connectivity"
+  subtitle="Telecom & Software Solutions Built for Performance and Scale">
+</app-hero>
+
+<section class="stats-section section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item" *ngFor="let stat of stats">
+        <div class="stat-value">{{ stat.value }}</div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services-preview section">
+  <div class="container">
+    <app-section-title
+      title="Our Services"
+      subtitle="Comprehensive solutions for your technology needs">
+    </app-section-title>
+    
+    <div class="services-grid">
+      <app-service-card *ngFor="let service of services" [service]="service"></app-service-card>
+    </div>
+    
+    <div class="text-center" style="margin-top: 3rem;">
+      <a routerLink="/services" class="btn btn-primary">View All Services</a>
+    </div>
+  </div>
+</section>
+
+<section class="why-choose section">
+  <div class="container">
+    <app-section-title
+      title="Why Choose Telvance Solutions"
+      subtitle="Experience the difference of working with industry leaders">
+    </app-section-title>
+    
+    <div class="why-grid">
+      <div class="why-item" *ngFor="let item of whyChooseUs">
+        <div class="why-icon">{{ item.icon }}</div>
+        <h3 class="why-title">{{ item.title }}</h3>
+        <p class="why-description">{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>

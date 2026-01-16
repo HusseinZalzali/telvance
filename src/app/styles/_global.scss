@@ -1,0 +1,160 @@
+@import './variables';
+@import './mixins';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $text-primary;
+  background-color: $primary-bg;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(55, 182, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(55, 182, 255, 0.03) 0%, transparent 50%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+  margin-bottom: $spacing-md;
+}
+
+h1 {
+  font-size: $font-size-5xl;
+  
+  @include respond-below(lg) {
+    font-size: $font-size-4xl;
+  }
+  
+  @include respond-below(md) {
+    font-size: $font-size-3xl;
+  }
+}
+
+h2 {
+  font-size: $font-size-4xl;
+  
+  @include respond-below(lg) {
+    font-size: $font-size-3xl;
+  }
+  
+  @include respond-below(md) {
+    font-size: $font-size-2xl;
+  }
+}
+
+h3 {
+  font-size: $font-size-3xl;
+  
+  @include respond-below(md) {
+    font-size: $font-size-2xl;
+  }
+}
+
+h4 {
+  font-size: $font-size-2xl;
+  
+  @include respond-below(md) {
+    font-size: $font-size-xl;
+  }
+}
+
+p {
+  margin-bottom: $spacing-md;
+  color: $text-secondary;
+  line-height: 1.7;
+}
+
+a {
+  color: $primary-accent;
+  text-decoration: none;
+  transition: all $transition-base;
+
+  &:hover {
+    color: lighten($primary-accent, 10%);
+    text-shadow: 0 0 8px rgba(55, 182, 255, 0.3);
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+// Utility Classes
+.container {
+  @include container;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-gradient {
+  color: $primary-accent;
+}
+
+.section {
+  @include section-spacing;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// Modern scroll reveal animation
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
